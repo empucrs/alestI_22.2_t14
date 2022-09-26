@@ -1,5 +1,5 @@
-PROG    = run.x
-SOURCE  = Principal.cpp ListaContinua.cpp
+PROG    = run.exe
+SOURCE  = main.cpp Pilha.cpp
 OBJECTS = $(SOURCE:.cpp=.o)
 
 $(PROG): $(OBJECTS)

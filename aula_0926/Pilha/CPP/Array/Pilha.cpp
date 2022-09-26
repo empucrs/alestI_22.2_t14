@@ -5,15 +5,29 @@ Pilha::Pilha(int size){
         size=10;
     this->pilha=new int[size];
     this->topo=0;
-    this->capacidade=size
+    this->capacidade=size;
 }
 
 bool Pilha::push(int value){
+    if(this->topo==capacidade) grow();
+    this->pilha[this->topo++]=value;
+}
 
+void Pilha::grow(){
+    int *aux = new int[this->capacidade*2];
+    for(int i=0; i<this->capacidade; i++)
+      aux[i]=this->pilha[i];
+    this->pilha=aux;
+    this->capacidade*=2;
 }
 
 int  Pilha::pop(){
-    
+    if(this->topo<=0)
+        throw "empty stack";
+    else{
+        this->topo--;
+        return this->pilha[this->topo];
+    }
 }
 
 int  Pilha::top(){    
@@ -35,5 +49,6 @@ bool Pilha::isEmpty(){
 void Pilha::clear(){
     this->topo=0;
     delete this->pilha;    
-    this->pilha=new int[10];
+    this->capacidade=10;
+    this->pilha=new int[this->capacidade];
 }
