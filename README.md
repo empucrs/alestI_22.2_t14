@@ -17,3 +17,7 @@
       --> clonei este repositório
       --> Adicionei os passos neste arquivo
       --> estou realizando um commit e um push neste momento via console do windows
+        --> precisei identificar meu usuário
+          --> usei "git config --local user.name empucrs" e não funcionou
+          --> usei "git config --local user.email edson.moreno@pucrs.br" e a chave ssh foi identificada, sem a necessidade de entrar com a senha
+         
