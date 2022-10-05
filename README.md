@@ -20,4 +20,4 @@
         --> precisei identificar meu usuário
           --> usei "git config --local user.name empucrs" e não funcionou
           --> usei "git config --local user.email edson.moreno@pucrs.br" e a chave ssh foi identificada, sem a necessidade de entrar com a senha
-         
+      --> git commit e git push funcionou tanto do console do windows qto do console lançado no vscode   
