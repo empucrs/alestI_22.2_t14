@@ -2,43 +2,19 @@ public class Principal {
 
     public static void main(String[] args) {
 
-        try{
+        GenericTree gt = new GenericTree();
 
-            LinkedListQueue lq = new LinkedListQueue();
+        gt.add(3, null);
+        gt.add(1, 3);
+        gt.add(7, 3);
+        gt.add(4, 3);
+        gt.doTheString();
+        System.out.println();
+        gt.add(5, 7);
+        gt.doTheString();
+        System.out.println();
 
-            System.out.println("O nro de elementos da fila é: "+ lq.size());
-            System.out.println();
-
-            lq.enqueue(14);
-            System.out.println("O nro de elementos da fila é: "+ lq.size());
-            System.out.println("O primeiro elementos da fila é: "+ lq.head());
-            System.out.println();
-            
-            lq.enqueue(15);
-            System.out.println("O nro de elementos da fila é: "+ lq.size());
-            System.out.println("O primeiro elementos da fila é: "+ lq.head());
-            System.out.println();
-            
-            lq.enqueue(16);
-            System.out.println("O nro de elementos da fila é: "+ lq.size());
-            System.out.println("O primeiro elementos da fila é: "+ lq.head());
-            System.out.println();
-            
-            int valor=lq.dequeue();
-            System.out.println("O nro de elementos da fila é: "+ lq.size());
-            System.out.println("O elemento removido da fila é: "+ valor);
-            System.out.println("O primeiro elementos da fila é: "+ lq.head());
-            System.out.println();
-            
-            lq.enqueue(17);
-            System.out.println("O nro de elementos da fila é: "+ lq.size());
-            System.out.println("O primeiro elementos da fila é: "+ lq.head());
-            System.out.println();
-        }
-        catch(Exception e){
-            System.err.println(e.getMessage());
-        }
-        
+       
     }
 
     

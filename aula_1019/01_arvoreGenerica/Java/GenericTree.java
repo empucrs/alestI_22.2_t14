@@ -37,7 +37,7 @@ public class GenericTree{
             return null;
         }
         //retorna o número de filhos
-        int getSubtreesSize(){
+        int getSubtreeSize(){
             return nChild;
         }  
     }
@@ -55,19 +55,42 @@ public class GenericTree{
         this.nElements=0;
     }
 
+
+    // método privado elaborado na versão 0.2
+    private TreeNode searchNode(Integer value, TreeNode ref){
+
+        if(ref!=null){
+            if(ref.value==value)
+                return ref;
+            else{
+                TreeNode aux=null;
+                for(int i=0; i<ref.getSubtreeSize(); i++){
+                    aux=searchNode(value, ref.getSubtree(i));
+                    if(aux != null)
+                        return aux;
+                }
+                return null;
+            }
+        }
+        else
+            return null;
+
+    }
+
     //insere o elemento e como filho de father
     // Versao 0.1 -> Inclui root e inclui filho de root
+    // Versao 0.2 -> Permite a inclusão de mais níveis na árvore
     public boolean add(Integer e, Integer father){
-        TreeNode aux = new TreeNode(e);
+        TreeNode aux;
         if(nElements==0){
-            this.root=aux;
+            this.root=new TreeNode(e);
         }
         else{
-            if(root.value==father){
-                root.addSubtree(aux);
-            }
-            else
+            aux = searchNode(father, root);
+            if(aux==null)
                 return false;
+            else
+                aux.addSubtree(new TreeNode(e));
         }
         nElements++;
 
@@ -75,12 +98,18 @@ public class GenericTree{
     }
 
     //retorna o elemento armazenado na raiz
-    Integer getRoot(){
-        return 0;
+    public Integer getRoot(){
+        if(root!=null)
+            return root.value;
+        return null;
     }
 
     //altera o elemento armazenado na raiz
-    void setRoot(Integer e){
+    public void setRoot(Integer e){
+        if((e!=null) && (root!=null)){
+            root.value=e;
+        }
+
         
     }
 
@@ -111,21 +140,26 @@ public class GenericTree{
 
     //retorna true se o elemento e está armazenado na raiz
     boolean isRoot(Integer e){
-        return true;
+        if((root!=null)&&(e!=null)&&(root.value==e))
+            return true;
+        return false;
     }
 
     //retorna true se a árvore está vazia    
     boolean isEmpty(){
-        return true;
+        return (nElements==0);
     }
 
     //retorna o número de elementos armazenados na árvore
     int size(){
-        return 0;
+        return nElements;
     }
     //remove todos os elementos da árvore
     void clear(){
-
+        //requer navegação
+        //ou solução baseada em garbage collector
+        root=null;
+        nElements=0;
     }
 
     //retorna uma lista com todos os elementos da árvore na ordem pré-fixada
@@ -142,4 +176,21 @@ public class GenericTree{
     int [] positionsWidth(){
         return null;
     }
+
+    public void doTheString(){
+
+        printValue(root);
+
+    }
+
+    private void printValue(TreeNode ref){
+
+        if(ref!=null){
+            System.out.print(ref.value+"; ");
+            for(int i=0; i<ref.getSubtreeSize(); i++)
+                printValue(ref.getSubtree(i));
+        }
+
+    }
+
 }
