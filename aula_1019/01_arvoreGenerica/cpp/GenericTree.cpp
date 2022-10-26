@@ -154,6 +154,8 @@ int GenericTree::size(){
 }
 void GenericTree::clear(){
 	removeBranch(this->root);
+	this->root=nullptr;
+	nElements=0;
 }
 int * GenericTree::positionPre(){return nullptr;}
 int * GenericTree::positionPos(){return nullptr;}
