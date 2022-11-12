@@ -317,7 +317,7 @@ public class ArvoreBinariaDePesquisa {
     }
     String graphvizDiagram(){
 
-        String resultado="Use o graphviz para visualizar a árvore: link para graphviz online -> https://dreampuf.github.io/GraphvizOnlinen\n";
+        String resultado="Use o graphviz para visualizar a árvore: link para graphviz online -> https://dreampuf.github.io/GraphvizOnline\n";
         resultado+="digraph GViz{\n";
 
         if(root==null)
